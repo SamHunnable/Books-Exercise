@@ -1,13 +1,16 @@
 package com.qa.repository;
 
-import static javax.transaction.Transactional.TxType.SUPPORTS;
 import static javax.transaction.Transactional.TxType.REQUIRED;
+import static javax.transaction.Transactional.TxType.SUPPORTS;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Default;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import javax.transaction.Transactional;
+
+import org.apache.log4j.Logger;
 
 import com.google.gson.Gson;
 import com.qa.domain.Book;
@@ -17,6 +20,8 @@ import com.qa.domain.Book;
 @Transactional(SUPPORTS)
 public class BookDBRepository implements BookRepository {
 
+	private static final Logger LOGGER = Logger.getLogger(BookDBRepository.class);
+	
 	@PersistenceContext(unitName = "primary")
 	private EntityManager manager;
 	
@@ -37,8 +42,10 @@ public class BookDBRepository implements BookRepository {
 	}
 
 	@Transactional(REQUIRED)
-	public String deleteBook(Long id) {
-		manager.remove(id);
+	public String deleteBook(long id) {
+		
+		manager.remove(manager.find(Book.class, id));
+		LOGGER.info("BookDBRepository delete book");
 		return "{\"message\": \"Book deleted\"}";
 	}
 

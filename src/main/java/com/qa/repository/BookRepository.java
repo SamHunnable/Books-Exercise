@@ -6,6 +6,6 @@ public interface BookRepository {
 
 	String createBook(String book);
 
-	String deleteBook(Long id);
+	String deleteBook(long id);
 
 }

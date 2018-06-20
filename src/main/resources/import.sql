@@ -1,0 +1,1 @@
+INSERT INTO book (ID, booktitle, genre , yearpublished) VALUES (1, 'aBook', 'Thriller', '1234')

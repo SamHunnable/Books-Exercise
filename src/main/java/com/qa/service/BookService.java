@@ -6,6 +6,6 @@ public interface BookService {
 
 	String createBook(String book);
 
-	String deleteBook(Long id);
+	String deleteBook(long id);
 
 }
