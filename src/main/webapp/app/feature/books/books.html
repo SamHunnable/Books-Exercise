@@ -1,34 +1,38 @@
 <div class="panel panel-default" ng-controller="bookController as bookCtrl">
-	    <div class="panel-heading">Books page</div>
-	    <div class="panel-body">
-   		{{bookCtrl.test}}
-   		<div ng-hide="bookCtrl.isHidden">
-        	<h3><span>Books table</span></h3>
-        	<table class="table">
-        		<tr>
-        			<th>{{'Title' | uppercase}}</th>
-        			<th>{{'Genre' | uppercase}}</th>
-        			<th>{{'Year Published' | uppercase}}</th>
-        		</tr>
-        		<tr ng-repeat="book in bookCtrl.books">
-        			<td>{{book.bookTitle}}</td>
-        			<td>{{book.genre}}</td>
-        			<td>{{book.yearPublished}}</td>
-							<td> {{book.id}} </td>
-							<td> <button type="button" ng-click="bookCtrl.myDelete(book)"> Delete </button> </td>
-        		</tr>
-						<div>
-						<tr ng-hide="bookCtrl.inputState">
-							<form>
+	<div class="panel-heading">Books page</div>
+	<div class="panel-body">
+		{{bookCtrl.test}}
+		<div ng-hide="bookCtrl.isHidden">
+			<h3><span>Books table</span></h3>
+			<table class="table">
+				<tr>
+					<th>{{'Title' | uppercase}}</th>
+					<th>{{'Genre' | uppercase}}</th>
+					<th>{{'Year Published' | uppercase}}</th>
+					<th>{{'ID' | uppercase}}</th>
+					<th> </th>
+				</tr>
+				<tr ng-repeat="book in bookCtrl.books | filter:bookCtrl.searchTerm">
+					<td>{{book.bookTitle}}</td>
+					<td>{{book.genre}}</td>
+					<td>{{book.yearPublished}}</td>
+					<td> {{book.id}} </td>
+					<td> <button class="btn" ng-click="bookCtrl.myDelete(book)"> Delete </button> </td>
+				</tr>
+				<div>
+					<tr ng-hide="bookCtrl.inputState">
+						<form>
 							<td> <input type="text" ng-model="bookCtrl.formData.newTitle" /> </td>
 							<td> <input type="text" ng-model="bookCtrl.formData.newGenre" /> </td>
 							<td> <input type="text" ng-model="bookCtrl.formData.newYear" /> </td>
-							</form>
-							<td><button type="button" ng-click="bookCtrl.saveBook()"> Save </button> </td>
-						</tr>
-        	</table>
-        </div>
-        <button class="btn" ng-click="bookCtrl.hideTable()">Hide books</button>
-				<button class="button" ng-click="bookCtrl.showCreate()">Add a Book</button>
+						</form>
+						<td><button class="btn" ng-click="bookCtrl.saveBook()"> Save </button> </td>
+					</tr>
+			</table>
+			</div>
+			<button class="btn" ng-click="bookCtrl.hideTable()">Hide books</button>
+			<button class="btn" ng-click="bookCtrl.showCreate()">Add a Book</button> <br>
+			Search : <input type="text" ng-model="bookCtrl.searchTerm" />
+
+		</div>
 	</div>
-</div>
