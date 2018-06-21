@@ -9,6 +9,21 @@
 
         vm.isHidden = false;
         vm.inputState = true;
+        vm.editState = false;
+
+        vm.showUpdate = function(book)
+        {
+          vm.titleEdit = book.bookTitle;
+          vm.genreEdit = book.genre;
+          vm.yearEdit = book.yearPublished;
+          vm.idToEdit = book.id;
+          vm.editState = !vm.editState;
+        }
+
+        vm.showCreate = function()
+        {
+          vm.inputState = !vm.inputState
+        }
 
         vm.hideTable = function()
         {
@@ -46,10 +61,21 @@
          location.reload();
        }
 
-       vm.showCreate = function()
+       vm.myUpdate = function()
        {
-         vm.inputState = !vm.inputState
+         console.log("UPDATE RAN");
+         var bookToUpdate = {
+           "id" : vm.idToEdit,
+           "bookTitle" : vm.titleEdit,
+           "genre" : vm.genreEdit,
+           "yearPublished" : vm.yearEdit
+         }
+         bookService.updateBook(bookToUpdate);
+         console.log(bookToUpdate);
+         location.reload();
        }
+
+
 
 
     };

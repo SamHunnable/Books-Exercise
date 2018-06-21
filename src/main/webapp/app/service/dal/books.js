@@ -13,7 +13,7 @@
         };
 
         this.updateBook = function (bookToUpdate) {
-            return dal.http.PUT("rest/Book/json/", bookToUpdate);
+            return dal.http.PUT("rest/Book/json", bookToUpdate);
         };
 
         this.deleteBook = function (bookToDelete) {
