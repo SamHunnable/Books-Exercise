@@ -26,9 +26,15 @@
 
        init();
 
-       function myDelete () {
-
+       vm.myDelete = function(id)
+       {
+         bookService.deleteBook(id);
+         console.log("myDelete ran");
+         bookService.getBooks().then(function (results) {
+           vm.books = results;
+         });
        }
+
 
     };
 

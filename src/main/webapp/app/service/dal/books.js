@@ -17,7 +17,7 @@
         };
 
         this.deleteBook = function (bookToDelete) {
-            return dal.http.DELETE("/rest/Book/json/", bookToDelete);
+            return dal.http.DELETE("rest/Book/json/", bookToDelete);
         };
     }
 

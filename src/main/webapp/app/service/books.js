@@ -10,6 +10,11 @@
         	return bookDal.getBooks();
         };
 
+        this.deleteBook = function (id)
+        {
+          return bookDal.deleteBook(id);
+        }
+
     }
 
     angular.module("BookApp").service("bookService", ['bookDal', BookService]);
