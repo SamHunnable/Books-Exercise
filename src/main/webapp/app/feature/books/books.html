@@ -17,7 +17,8 @@
 							<td> {{book.id}} </td>
 							<td> <button type="button" ng-click="bookCtrl.myDelete(book)"> Delete </button> </td>
         		</tr>
-						<tr>
+						<div>
+						<tr ng-hide="bookCtrl.inputState">
 							<form>
 							<td> <input type="text" ng-model="bookCtrl.formData.newTitle" /> </td>
 							<td> <input type="text" ng-model="bookCtrl.formData.newGenre" /> </td>
@@ -28,5 +29,6 @@
         	</table>
         </div>
         <button class="btn" ng-click="bookCtrl.hideTable()">Hide books</button>
+				<button class="button" ng-click="bookCtrl.showCreate()">Add a Book</button>
 	</div>
 </div>

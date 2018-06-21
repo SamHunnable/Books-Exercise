@@ -8,6 +8,7 @@
       vm.formData = {};
 
         vm.isHidden = false;
+        vm.inputState = true;
 
         vm.hideTable = function()
         {
@@ -35,15 +36,19 @@
           "yearPublished" : vm.formData.newYear
         }
          bookService.saveBook(bookToSave);
+         location.reload();
        }
 
        vm.myDelete = function(bookToDelete)
        {
          bookService.deleteBook(bookToDelete);
          console.log("myDelete ran");
-         bookService.getBooks().then(function (results) {
-           vm.books = results;
-         });
+         location.reload();
+       }
+
+       vm.showCreate = function()
+       {
+         vm.inputState = !vm.inputState
        }
 
 
