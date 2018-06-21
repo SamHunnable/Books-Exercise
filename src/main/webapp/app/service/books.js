@@ -10,9 +10,14 @@
         	return bookDal.getBooks();
         };
 
-        this.deleteBook = function (id)
+        this.deleteBook = function(bookToDelete)
         {
-          return bookDal.deleteBook(id);
+          return bookDal.deleteBook(bookToDelete);
+        }
+
+        this.saveBook = function(bookToSave)
+        {
+          return bookDal.deleteBook(bookToDelete);
         }
 
     }

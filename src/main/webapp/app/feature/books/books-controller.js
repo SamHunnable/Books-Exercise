@@ -26,9 +26,14 @@
 
        init();
 
-       vm.myDelete = function(id)
+       vm.saveBook = function(bookToSave)
        {
-         bookService.deleteBook(id);
+         BookService.saveBook(bookToSave);
+       }
+
+       vm.myDelete = function(bookToDelete)
+       {
+         bookService.deleteBook(bookToDelete);
          console.log("myDelete ran");
          bookService.getBooks().then(function (results) {
            vm.books = results;
