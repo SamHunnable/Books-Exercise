@@ -3,8 +3,9 @@
 (function() {
 
     var BookController =  function(bookService, $log) {
-
     	var vm = this;
+
+      vm.formData = {};
 
         vm.isHidden = false;
 
@@ -26,9 +27,14 @@
 
        init();
 
-       vm.saveBook = function(bookToSave)
+       vm.saveBook = function()
        {
-         BookService.saveBook(bookToSave);
+        var bookToSave = {
+          "bookTitle" : vm.formData.newTitle,
+          "genre" : vm.formData.newGenre,
+          "yearPublished" : vm.formData.newYear
+        }
+         bookService.saveBook(bookToSave);
        }
 
        vm.myDelete = function(bookToDelete)
