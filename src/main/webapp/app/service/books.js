@@ -13,11 +13,11 @@
         this.deleteBook = function(bookToDelete)
         {
           return bookDal.deleteBook(bookToDelete);
-        }
+        };
 
         this.saveBook = function(bookToSave)
         {
-          return bookDal.deleteBook(bookToDelete);
+          return bookDal.saveBook(bookToSave);
         }
 
     }

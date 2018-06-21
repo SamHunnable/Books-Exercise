@@ -17,9 +17,16 @@
 							<td> {{book.id}} </td>
 							<td> <button type="button" ng-click="bookCtrl.myDelete(book)"> Delete </button> </td>
         		</tr>
+						<tr>
+							<form>
+							<td> <input type="text" ng-model="bookCtrl.formData.newTitle" /> </td>
+							<td> <input type="text" ng-model="bookCtrl.formData.newGenre" /> </td>
+							<td> <input type="text" ng-model="bookCtrl.formData.newYear" /> </td>
+							</form>
+							<td><button type="button" ng-click="bookCtrl.saveBook()"> Save </button> </td>
+						</tr>
         	</table>
         </div>
         <button class="btn" ng-click="bookCtrl.hideTable()">Hide books</button>
-				<button class="btn" ng-click="bookCtrl.hideTable()">Create a book></button>
 	</div>
 </div>
