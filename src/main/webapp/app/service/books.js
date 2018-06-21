@@ -20,6 +20,11 @@
           return bookDal.saveBook(bookToSave);
         }
 
+        this.updateBook = function(bookToUpdate)
+        {
+          return bookDal.updateBook(bookToUpdate);
+        }
+
     }
 
     angular.module("BookApp").service("bookService", ['bookDal', BookService]);

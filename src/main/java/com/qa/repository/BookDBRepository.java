@@ -48,5 +48,24 @@ public class BookDBRepository implements BookRepository {
 		LOGGER.info("BookDBRepository delete book");
 		return "{\"message\": \"Book deleted\"}";
 	}
+	
+	@Transactional(REQUIRED)
+	public String updateBook(String book) {
+		
+		Book bookFromJson = new Gson().fromJson(book, Book.class);
+		Book bookFromDB = manager.find(Book.class, bookFromJson.getId());
+		if (bookFromJson != null && bookFromDB != null) {
+			bookFromDB.setBookTitle(bookFromJson.getBookTitle());
+			bookFromDB.setGenre(bookFromJson.getGenre());
+			bookFromDB.setYearPublished(bookFromJson.getYearPublished());
+			return "{\"message\": \"Account successfully edited via DB\"}";
+		}
+		else {
+			return "{\"message\": \"Editing failed\"}";
+		}
+		
+		
+	}
+	
 
 }
