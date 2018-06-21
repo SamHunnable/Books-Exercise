@@ -14,10 +14,11 @@
         			<td>{{book.bookTitle}}</td>
         			<td>{{book.genre}}</td>
         			<td>{{book.yearPublished}}</td>
-							<td> <input type="button" onclick="myDelete()">
+							<td> {{book.id}} </td>
+							<td> <button type="button" ng-click="bookCtrl.myDelete(book)"> Delete </button> </td>
         		</tr>
         	</table>
         </div>
-        <button class="btn"ng-click="bookCtrl.hideTable()">Hide books</button>
+        <button class="btn" ng-click="bookCtrl.hideTable()">Hide books</button>
 	</div>
 </div>
